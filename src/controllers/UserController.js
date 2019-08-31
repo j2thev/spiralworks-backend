@@ -72,7 +72,7 @@ function update(req, res) {
   const findOptions = { _id: id };
   const update = req.body;
 
-  User.updateOne(findOptions, update)
+  User.findOneAndUpdate(findOptions, update)
     .then(result => {
       res.status(200).json({
         data: result
