@@ -17,8 +17,8 @@ function search(req, res) {
 }
 
 function get(req, res) {
-  const { id } = req.params;
-  const findOptions = { _id: id };
+  const { id: _id } = req.params;
+  const findOptions = { _id };
 
   User.findOne(findOptions)
     .then(user => {
@@ -68,11 +68,11 @@ function create(req, res) {
 }
 
 function update(req, res) {
-  const { id } = req.params;
-  const findOptions = { _id: id };
+  const { id: _id } = req.params;
+  const findOptions = { _id };
   const update = req.body;
 
-  User.findOneAndUpdate(findOptions, update)
+  User.findOneAndUpdate(findOptions, update, { new: true})
     .then(result => {
       res.status(200).json({
         data: result
